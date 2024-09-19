@@ -10,4 +10,9 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/charts")
+    public String charts() {
+        return "charts";
+    }
 }

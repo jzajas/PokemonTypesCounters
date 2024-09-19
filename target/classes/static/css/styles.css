@@ -1,43 +1,53 @@
-body {
-    margin: 0;
-    padding: 0;
+.main-container {
+    display: flex;
+    justify-content: space-between; /* Space between the two sections */
+    padding: 20px;
+    height: 100vh;
+}
+
+.left-section, .right-section {
+    width: 40%; /* Make space for arrow */
+}
+
+.image-box-container {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
-    height: 100vh;
-    background-color: #f0f0f0;
-    position: relative; /* Allow positioning of the button */
+    align-items: center;
+    gap: 200px; /* Space between the two selectors */
 }
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: 250px;
-}
-.box {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    background-color: white;
-}
+
+
 img {
-    max-width: 100%;
+    max-width: 200px;
     height: auto;
 }
 
-/* Style for the green button */
+.arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+
+.arrow-right::before {
+    content: "→";
+    font-size: 60px;
+    color: black;
+}
+
+#displayNamesBox {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+}
+
 #greenButton {
-    position: absolute;
-    bottom: 20px; /* Distance from the bottom */
-    left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
+    margin-top: 20px;
+    padding: 10px 20px;
     background-color: green;
     color: white;
     border: none;
-    padding: 10px 20px;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
 }
 #greenButton:hover {

@@ -2,10 +2,12 @@ package com.zajdsky.typesCounters.Templates;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 //TODO possible change of how to store type information
 public class Types {
+
         // Normal
         public static final List<String> normalEffectiveAttack = new ArrayList<>();
         public static final List<String> normalEffectiveDefense = new ArrayList<>();

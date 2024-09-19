@@ -2,10 +2,7 @@ package com.zajdsky.typesCounters.Services;
 
 import com.zajdsky.typesCounters.Templates.Types;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class ProcessTypes {
 
@@ -18,7 +15,6 @@ public class ProcessTypes {
 
     }
 //    TODO add 'None' as an option to the javascript an html when choosing type
-//    TODO change all cases to .addALL() instead of '='
     private void processType(String[] pokemonTypes) {
         List<String> effectiveAttack = new ArrayList<>();
         List<String> effectiveDefense = new ArrayList<>();
@@ -41,155 +37,151 @@ public class ProcessTypes {
                     cannotDamage.addAll(Types.normalCannotDamage);
                     break;
                 case "FIRE":
-                    effectiveAttack = Types.fireEffectiveAttack;
-                    effectiveDefense = Types.fireEffectiveDefense;
-                    weakAttack = Types.fireWeakAttack;
-                    weakDefense = Types.fireWeakDefense;
-                    immuneTo = Types.fireImmuneTo;
-                    cannotDamage = Types.fireCannotDamage;
+                    effectiveAttack.addAll(Types.fireEffectiveAttack);
+                    effectiveDefense.addAll(Types.fireEffectiveDefense);
+                    weakAttack.addAll(Types.fireWeakAttack);
+                    weakDefense.addAll(Types.fireWeakDefense);
+                    immuneTo.addAll(Types.fireImmuneTo);
+                    cannotDamage.addAll(Types.fireCannotDamage);
                     break;
                 case "WATER":
-                    effectiveAttack = Types.waterEffectiveAttack;
-                    effectiveDefense = Types.waterEffectiveDefense;
-                    weakAttack = Types.waterWeakAttack;
-                    weakDefense = Types.waterWeakDefense;
-                    immuneTo = Types.waterImmuneTo;
-                    cannotDamage = Types.waterCannotDamage;
+                    effectiveAttack.addAll(Types.waterEffectiveAttack);
+                    effectiveDefense.addAll(Types.waterEffectiveDefense);
+                    weakAttack.addAll(Types.waterWeakAttack);
+                    weakDefense.addAll(Types.waterWeakDefense);
+                    immuneTo.addAll(Types.waterImmuneTo);
+                    cannotDamage.addAll(Types.waterCannotDamage);
                     break;
                 case "ELECTRIC":
-                    effectiveAttack = Types.electricEffectiveAttack;
-                    effectiveDefense = Types.electricEffectiveDefense;
-                    weakAttack = Types.electricWeakAttack;
-                    weakDefense = Types.electricWeakDefense;
-                    immuneTo = Types.electricImmuneTo;
-                    cannotDamage = Types.electricCannotDamage;
+                    effectiveAttack.addAll(Types.electricEffectiveAttack);
+                    effectiveDefense.addAll(Types.electricEffectiveDefense);
+                    weakAttack.addAll(Types.electricWeakAttack);
+                    weakDefense.addAll(Types.electricWeakDefense);
+                    immuneTo.addAll(Types.electricImmuneTo);
+                    cannotDamage.addAll(Types.electricCannotDamage);
                     break;
                 case "GRASS":
-                    effectiveAttack = Types.grassEffectiveAttack;
-                    effectiveDefense = Types.grassEffectiveDefense;
-                    weakAttack = Types.grassWeakAttack;
-                    weakDefense = Types.grassWeakDefense;
-                    immuneTo = Types.grassImmuneTo;
-                    cannotDamage = Types.grassCannotDamage;
+                    effectiveAttack.addAll(Types.grassEffectiveAttack);
+                    effectiveDefense.addAll(Types.grassEffectiveDefense);
+                    weakAttack.addAll(Types.grassWeakAttack);
+                    weakDefense.addAll(Types.grassWeakDefense);
+                    immuneTo.addAll(Types.grassImmuneTo);
+                    cannotDamage.addAll(Types.grassCannotDamage);
                     break;
                 case "ICE":
-                    effectiveAttack = Types.iceEffectiveAttack;
-                    effectiveDefense = Types.iceEffectiveDefense;
-                    weakAttack = Types.iceWeakAttack;
-                    weakDefense = Types.iceWeakDefense;
-                    immuneTo = Types.iceImmuneTo;
-                    cannotDamage = Types.iceCannotDamage;
+                    effectiveAttack.addAll(Types.iceEffectiveAttack);
+                    effectiveDefense.addAll(Types.iceEffectiveDefense);
+                    weakAttack.addAll(Types.iceWeakAttack);
+                    weakDefense.addAll(Types.iceWeakDefense);
+                    immuneTo.addAll(Types.iceImmuneTo);
+                    cannotDamage.addAll(Types.iceCannotDamage);
                     break;
                 case "FIGHTING":
-                    effectiveAttack = Types.fightingEffectiveAttack;
-                    effectiveDefense = Types.fightingEffectiveDefense;
-                    weakAttack = Types.fightingWeakAttack;
-                    weakDefense = Types.fightingWeakDefense;
-                    immuneTo = Types.fightingImmuneTo;
-                    cannotDamage = Types.fightingCannotDamage;
+                    effectiveAttack.addAll(Types.fightingEffectiveAttack);
+                    effectiveDefense.addAll(Types.fightingEffectiveDefense);
+                    weakAttack.addAll(Types.fightingWeakAttack);
+                    weakDefense.addAll(Types.fightingWeakDefense);
+                    immuneTo.addAll(Types.fightingImmuneTo);
+                    cannotDamage.addAll(Types.fightingCannotDamage);
                     break;
                 case "POISON":
-                    effectiveAttack = Types.poisonEffectiveAttack;
-                    effectiveDefense = Types.poisonEffectiveDefense;
-                    weakAttack = Types.poisonWeakAttack;
-                    weakDefense = Types.poisonWeakDefense;
-                    immuneTo = Types.poisonImmuneTo;
-                    cannotDamage = Types.poisonCannotDamage;
+                    effectiveAttack.addAll(Types.poisonEffectiveAttack);
+                    effectiveDefense.addAll(Types.poisonEffectiveDefense);
+                    weakAttack.addAll(Types.poisonWeakAttack);
+                    weakDefense.addAll(Types.poisonWeakDefense);
+                    immuneTo.addAll(Types.poisonImmuneTo);
+                    cannotDamage.addAll(Types.poisonCannotDamage);
                     break;
                 case "GROUND":
-                    effectiveAttack = Types.groundEffectiveAttack;
-                    effectiveDefense = Types.groundEffectiveDefense;
-                    weakAttack = Types.groundWeakAttack;
-                    weakDefense = Types.groundWeakDefense;
-                    immuneTo = Types.groundImmuneTo;
-                    cannotDamage = Types.groundCannotDamage;
+                    effectiveAttack.addAll(Types.groundEffectiveAttack);
+                    effectiveDefense.addAll(Types.groundEffectiveDefense);
+                    weakAttack.addAll(Types.groundWeakAttack);
+                    weakDefense.addAll(Types.groundWeakDefense);
+                    immuneTo.addAll(Types.groundImmuneTo);
+                    cannotDamage.addAll(Types.groundCannotDamage);
                     break;
                 case "FLYING":
-                    effectiveAttack = Types.flyingEffectiveAttack;
-                    effectiveDefense = Types.flyingEffectiveDefense;
-                    weakAttack = Types.flyingWeakAttack;
-                    weakDefense = Types.flyingWeakDefense;
-                    immuneTo = Types.flyingImmuneTo;
-                    cannotDamage = Types.flyingCannotDamage;
+                    effectiveAttack.addAll(Types.flyingEffectiveAttack);
+                    effectiveDefense.addAll(Types.flyingEffectiveDefense);
+                    weakAttack.addAll(Types.flyingWeakAttack);
+                    weakDefense.addAll(Types.flyingWeakDefense);
+                    immuneTo.addAll(Types.flyingImmuneTo);
+                    cannotDamage.addAll(Types.flyingCannotDamage);
                     break;
                 case "PSYCHIC":
-                    effectiveAttack = Types.psychicEffectiveAttack;
-                    effectiveDefense = Types.psychicEffectiveDefense;
-                    weakAttack = Types.psychicWeakAttack;
-                    weakDefense = Types.psychicWeakDefense;
-                    immuneTo = Types.psychicImmuneTo;
-                    cannotDamage = Types.psychicCannotDamage;
+                    effectiveAttack.addAll(Types.psychicEffectiveAttack);
+                    effectiveDefense.addAll(Types.psychicEffectiveDefense);
+                    weakAttack.addAll(Types.psychicWeakAttack);
+                    weakDefense.addAll(Types.psychicWeakDefense);
+                    immuneTo.addAll(Types.psychicImmuneTo);
+                    cannotDamage.addAll(Types.psychicCannotDamage);
                     break;
                 case "BUG":
-                    effectiveAttack = Types.bugEffectiveAttack;
-                    effectiveDefense = Types.bugEffectiveDefense;
-                    weakAttack = Types.bugWeakAttack;
-                    weakDefense = Types.bugWeakDefense;
-                    immuneTo = Types.bugImmuneTo;
-                    cannotDamage = Types.bugCannotDamage;
+                    effectiveAttack.addAll(Types.bugEffectiveAttack);
+                    effectiveDefense.addAll(Types.bugEffectiveDefense);
+                    weakAttack.addAll(Types.bugWeakAttack);
+                    weakDefense.addAll(Types.bugWeakDefense);
+                    immuneTo.addAll(Types.bugImmuneTo);
+                    cannotDamage.addAll(Types.bugCannotDamage);
                     break;
                 case "ROCK":
-                    effectiveAttack = Types.rockEffectiveAttack;
-                    effectiveDefense = Types.rockEffectiveDefense;
-                    weakAttack = Types.rockWeakAttack;
-                    weakDefense = Types.rockWeakDefense;
-                    immuneTo = Types.rockImmuneTo;
-                    cannotDamage = Types.rockCannotDamage;
+                    effectiveAttack.addAll(Types.rockEffectiveAttack);
+                    effectiveDefense.addAll(Types.rockEffectiveDefense);
+                    weakAttack.addAll(Types.rockWeakAttack);
+                    weakDefense.addAll(Types.rockWeakDefense);
+                    immuneTo.addAll(Types.rockImmuneTo);
+                    cannotDamage.addAll(Types.rockCannotDamage);
                     break;
                 case "GHOST":
-                    effectiveAttack = Types.ghostEffectiveAttack;
-                    effectiveDefense = Types.ghostEffectiveDefense;
-                    weakAttack = Types.ghostWeakAttack;
-                    weakDefense = Types.ghostWeakDefense;
-                    immuneTo = Types.ghostImmuneTo;
-                    cannotDamage = Types.ghostCannotDamage;
+                    effectiveAttack.addAll(Types.ghostEffectiveAttack);
+                    effectiveDefense.addAll(Types.ghostEffectiveDefense);
+                    weakAttack.addAll(Types.ghostWeakAttack);
+                    weakDefense.addAll(Types.ghostWeakDefense);
+                    immuneTo.addAll(Types.ghostImmuneTo);
+                    cannotDamage.addAll(Types.ghostCannotDamage);
                     break;
                 case "DRAGON":
-                    effectiveAttack = Types.dragonEffectiveAttack;
-                    effectiveDefense = Types.dragonEffectiveDefense;
-                    weakAttack = Types.dragonWeakAttack;
-                    weakDefense = Types.dragonWeakDefense;
-                    immuneTo = Types.dragonImmuneTo;
-                    cannotDamage = Types.dragonCannotDamage;
+                    effectiveAttack.addAll(Types.dragonEffectiveAttack);
+                    effectiveDefense.addAll(Types.dragonEffectiveDefense);
+                    weakAttack.addAll(Types.dragonWeakAttack);
+                    weakDefense.addAll(Types.dragonWeakDefense);
+                    immuneTo.addAll(Types.dragonImmuneTo);
+                    cannotDamage.addAll(Types.dragonCannotDamage);
                     break;
                 case "DARK":
-                    effectiveAttack = Types.darkEffectiveAttack;
-                    effectiveDefense = Types.darkEffectiveDefense;
-                    weakAttack = Types.darkWeakAttack;
-                    weakDefense = Types.darkWeakDefense;
-                    immuneTo = Types.darkImmuneTo;
-                    cannotDamage = Types.darkCannotDamage;
+                    effectiveAttack.addAll(Types.darkEffectiveAttack);
+                    effectiveDefense.addAll(Types.darkEffectiveDefense);
+                    weakAttack.addAll(Types.darkWeakAttack);
+                    weakDefense.addAll(Types.darkWeakDefense);
+                    immuneTo.addAll(Types.darkImmuneTo);
+                    cannotDamage.addAll(Types.darkCannotDamage);
                     break;
                 case "STEEL":
-                    effectiveAttack = Types.steelEffectiveAttack;
-                    effectiveDefense = Types.steelEffectiveDefense;
-                    weakAttack = Types.steelWeakAttack;
-                    weakDefense = Types.steelWeakDefense;
-                    immuneTo = Types.steelImmuneTo;
-                    cannotDamage = Types.steelCannotDamage;
+                    effectiveAttack.addAll(Types.steelEffectiveAttack);
+                    effectiveDefense.addAll(Types.steelEffectiveDefense);
+                    weakAttack.addAll(Types.steelWeakAttack);
+                    weakDefense.addAll(Types.steelWeakDefense);
+                    immuneTo.addAll(Types.steelImmuneTo);
+                    cannotDamage.addAll(Types.steelCannotDamage);
                     break;
                 case "FAIRY":
-                    effectiveAttack = Types.fairyEffectiveAttack;
-                    effectiveDefense = Types.fairyEffectiveDefense;
-                    weakAttack = Types.fairyWeakAttack;
-                    weakDefense = Types.fairyWeakDefense;
-                    immuneTo = Types.fairyImmuneTo;
-                    cannotDamage = Types.fairyCannotDamage;
+                    effectiveAttack.addAll(Types.fairyEffectiveAttack);
+                    effectiveDefense.addAll(Types.fairyEffectiveDefense);
+                    weakAttack.addAll(Types.fairyWeakAttack);
+                    weakDefense.addAll(Types.fairyWeakDefense);
+                    immuneTo.addAll(Types.fairyImmuneTo);
+                    cannotDamage.addAll(Types.fairyCannotDamage);
                     break;
                 default:
                     break;
             }
         }
 
-//        TODO remove this part because strenghts and weaknesses are multiplicative --> possible add new functions to handle that
-//        Removing Duplicates
-        effectiveAttack = new ArrayList<>((new HashSet<>(effectiveAttack)));
-        effectiveDefense = new ArrayList<>((new HashSet<>(effectiveDefense)));
-        weakAttack = new ArrayList<>((new HashSet<>(weakAttack)));
-        weakDefense = new ArrayList<>((new HashSet<>(weakDefense)));
-        immuneTo = new ArrayList<>((new HashSet<>(immuneTo)));
-        cannotDamage = new ArrayList<>((new HashSet<>(cannotDamage)));
-
+//        Checking if some resistances or weaknesses are overlaping and prioritizing using/avoiding them if so
+        String prioritizeAttack = handleDuplicates(weakDefense);
+        String prioritizeDefense = handleDuplicates(weakAttack);
+        String avoidAttack = handleDuplicates(effectiveDefense);
+        String avoidDefense = handleDuplicates(effectiveAttack);
 
         if(!Objects.equals(pokemonTypes[0], "None") && !Objects.equals(pokemonTypes[1], "None")) {
             attackAs = processAttack(effectiveDefense, weakDefense, immuneTo);
@@ -197,8 +189,12 @@ public class ProcessTypes {
         } else {
             attackAs = effectiveAttack;
             defenseAs = effectiveDefense;
-
         }
+
+//        Removing duplicates from the lists
+        attackAs.removeAll(Collections.singleton(prioritizeAttack));
+        defenseAs.removeAll(Collections.singleton(prioritizeDefense));
+
 
     }
 
@@ -225,6 +221,20 @@ public class ProcessTypes {
         }
         defendAs.addAll(CannotDamage);
         return defendAs;
+    }
+
+
+    private String handleDuplicates(List<String> listOFTypes) {
+        String duplicate = null;
+        Set<String> seen = new HashSet<>();
+
+        for(String item : listOFTypes){
+            if(!seen.add(item)){
+                duplicate = item;
+            }
+        }
+
+        return duplicate;
     }
 
 }

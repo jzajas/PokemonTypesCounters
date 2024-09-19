@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Counter Types Selector</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="main-container">
+    <div class="left-section">
+        <div class="image-box-container">
+            <div class="box">
+                <select id="select1">
+                    <option value="">Select an image</option>
+                    <option value="/assets/images/dark.png" selected>Dark</option>
+                    <option value="/assets/images/bug.png">Bug</option>
+                    <option value="/assets/images/fairy.png">Fairy</option>
+                </select>
+                <div id="imageContainer1"></div>
+                <p id="name1"></p>
+            </div>
+            <div class="box">
+                <select id="select2">
+                    <option value="">Select an image</option>
+                    <option value="/assets/images/dark.png" selected>Dark</option>
+                    <option value="/assets/images/bug.png">Bug</option>
+                    <option value="/assets/images/fairy.png">Fairy</option>
+                </select>
+                <div id="imageContainer2"></div>
+                <p id="name2"></p>
+            </div>
+        </div>
+        <button id="greenButton">Calculate</button>
+    </div>
+
+    <div class="arrow-container">
+        <span class="arrow-right"></span>
+    </div>
+
+    <div class="right-section">
+        <div class="box" id="displayNamesBox">
+            <h3>Selected Names</h3>
+            <div id="selectedNames"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>
