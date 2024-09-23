@@ -104,7 +104,7 @@
                 <option value="/assets/images/steel.png">Steel</option>
                 <option value="/assets/images/water.png">Water</option>
             </select>
-            <img id="image1" src="/assets/images/dark.png" alt="Selected image 1">
+            <img id="image1"  alt="Selected image 1">
         </div>
 
         <div class="image-selector">
@@ -129,7 +129,7 @@
                 <option value="/assets/images/steel.png">Steel</option>
                 <option value="/assets/images/water.png">Water</option>
             </select>
-            <img id="image2" src="/assets/images/water.png" alt="Selected image 2">
+            <img id="image2"  alt="Selected image 2">
         </div>
     </div>
 
@@ -217,21 +217,87 @@
             });
         }
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Define the data to be inserted
-        const data = [
-            ['High', 'Medium'],
-            ['Low', 'High'],
-            ['Low', 'High'],
-        ];
-
-        // Populate cells using the new function
-        populateTable([data], 'prioritizeAttack');
-        populateTable([data], 'prioritizeDefense');
-
-    });
 </script>
+<script>
+    document.getElementById('greenButton').addEventListener('click', function() {
+    var select1Type = document.getElementById('select1').value;
+    var select2Type = document.getElementById('select2').value;
+    const type1 = select1.options[select1.selectedIndex]?.text || '';
+    const type2 = select2.options[select2.selectedIndex]?.text || '';
+
+    console.log('Type 1: ', type1)
+    console.log('Type 2: ', type2)
+
+    fetch('/api/selected-types', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            type1: type1,
+            type2: type2
+        })
+    })
+    console.log('Data sent: ', body)
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response from server:', data);
+
+        if (Array.isArray(data) && data.length === 6) {
+            populateTable(data[0],'prioritizeAttack');
+            populateTable([data[1]],'prioritizeDefense');
+            populateTable(data[2],'strongAttack');
+            populateTable([data[3]],'strongDefense');
+            populateTable(data[4],'avoidAttack');
+            populateTable([data[5]],'avoidDefense');
+
+
+        } else {
+            console.error('Unexpected data format received');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+});
+</script>
+<!--<script>-->
+<!--    function populateTable(items, id) {-->
+<!--        // Find the table cell with the given id-->
+<!--        const cell = document.getElementById(id);-->
+
+<!--        // Check if cell exists-->
+<!--        if (cell) {-->
+<!--            // Clear the existing content-->
+<!--            cell.innerText = '';-->
+
+<!--            // Populate the cell with the provided items-->
+<!--            items.forEach((item, index) => {-->
+<!--                // Create a new paragraph element for each item-->
+<!--                const p = document.createElement('p');-->
+<!--                p.innerText = item;-->
+
+<!--                // Append the paragraph to the cell-->
+<!--                cell.appendChild(p);-->
+<!--            });-->
+<!--        }-->
+<!--    }-->
+
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        // Define the data to be inserted-->
+<!--        const data = [-->
+<!--            ['High', 'Medium'],-->
+<!--            ['Low', 'High'],-->
+<!--            ['Low', 'High'],-->
+<!--        ];-->
+
+<!--        // Populate cells using the new function-->
+<!--        populateTable([data], 'prioritizeAttack');-->
+<!--        populateTable([data], 'prioritizeDefense');-->
+
+<!--    });-->
+<!--</script>-->
 
 </body>
 </html>

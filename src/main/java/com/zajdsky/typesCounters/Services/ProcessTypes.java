@@ -6,16 +6,13 @@ import java.util.*;
 
 public class ProcessTypes {
 
-//    TODO change return type
-//    TODO this should send the response to the html
-    public static void getTypes(String name1, String name2) {
+    public static List<List<String>> getTypes(String type1, String type2) {
 
-//        processType(new String[]{name1, name2});
-
-
+        return ProcessTypes.processType(new String[]{type1, type2});
     }
 //    TODO add 'None' as an option to the javascript an html when choosing type
-    private void processType(String[] pokemonTypes) {
+    private static List<List<String>> processType(String[] pokemonTypes) {
+
         List<String> effectiveAttack = new ArrayList<>();
         List<String> effectiveDefense = new ArrayList<>();
         List<String> weakAttack = new ArrayList<>();
@@ -23,10 +20,15 @@ public class ProcessTypes {
         List<String> immuneTo = new ArrayList<>();
         List<String> cannotDamage = new ArrayList<>();
 
-        List<String> attackAs;
-        List<String> defenseAs;
+        List<String> effectiveAttackers;
+        List<String> effectiveDefenders;
+        List<String> prioritizeAttack;
+        List<String> prioritizeDefense;
+        List<String> avoidAttack;
+        List<String> avoidDefense;
 
         for(String type : pokemonTypes) {
+            System.out.println(type);
             switch (type.toUpperCase()) {
                 case "NORMAL":
                     effectiveAttack.addAll(Types.normalEffectiveAttack);
@@ -178,32 +180,49 @@ public class ProcessTypes {
         }
 
 //        Checking if some resistances or weaknesses are overlaping and prioritizing using/avoiding them if so
-        String prioritizeAttack = handleDuplicates(weakDefense);
-        String prioritizeDefense = handleDuplicates(weakAttack);
-        String avoidAttack = handleDuplicates(effectiveDefense);
-        String avoidDefense = handleDuplicates(effectiveAttack);
-
         if(!Objects.equals(pokemonTypes[0], "None") && !Objects.equals(pokemonTypes[1], "None")) {
-            attackAs = processAttack(effectiveDefense, weakDefense, immuneTo);
-            defenseAs = processDefense(effectiveAttack, weakAttack, cannotDamage);
+            prioritizeAttack = handleDuplicates(weakDefense);
+            prioritizeDefense = handleDuplicates(weakAttack);
+            avoidAttack = handleDuplicates(effectiveDefense);
+            avoidDefense = handleDuplicates(effectiveAttack);
+
+            effectiveAttackers = processAttack(effectiveDefense, weakDefense, immuneTo);
+            effectiveDefenders = processDefense(effectiveAttack, weakAttack, cannotDamage);
         } else {
-            attackAs = effectiveAttack;
-            defenseAs = effectiveDefense;
+            prioritizeAttack = null;
+            prioritizeDefense = null;
+            avoidAttack = null;
+            avoidDefense = null;
+
+            effectiveAttackers = effectiveAttack;
+            effectiveDefenders = effectiveDefense;
         }
 
 //        Removing duplicates from the lists
-        attackAs.removeAll(Collections.singleton(prioritizeAttack));
-        defenseAs.removeAll(Collections.singleton(prioritizeDefense));
+        if (prioritizeAttack != null) {
+            effectiveAttackers.removeAll(prioritizeAttack);
+        }
+        if (prioritizeDefense != null) {
+            effectiveDefenders.removeAll(prioritizeDefense);
+        }
 
+        List<List<String>> combinedList = new ArrayList<>();
+        combinedList.add(prioritizeAttack);
+        combinedList.add(prioritizeDefense);
+        combinedList.add(effectiveAttackers);
+        combinedList.add(effectiveDefenders);
+        combinedList.add(avoidAttack);
+        combinedList.add(avoidDefense);
 
+        return combinedList;
     }
 
 
-    private List<String> processAttack(List<String> EffectiveDefense, List<String> WeakDefense, List<String> ImmuneTo) {
+    private static List<String> processAttack(List<String> effectiveDefense, List<String> weakDefense, List<String> immuneTo) {
         List<String> attackAs = new ArrayList<>();
 //        Checking whether a Pokemon has resistance from one type and weakness from the other
-        for(String type : WeakDefense) {
-            if(!EffectiveDefense.contains(type) && !ImmuneTo.contains(type)){
+        for(String type : weakDefense) {
+            if(!effectiveDefense.contains(type) && !immuneTo.contains(type)){
                 attackAs.add(type);
             }
         }
@@ -211,7 +230,7 @@ public class ProcessTypes {
     }
 
 
-    private List<String> processDefense(List<String> EffectiveAttack, List<String> WeakAttack, List<String> CannotDamage) {
+    private static List<String> processDefense(List<String> EffectiveAttack, List<String> WeakAttack, List<String> CannotDamage) {
         List<String> defendAs = new ArrayList<>();
 //        Checking whether a Pokemon has resistance from one type and weakness from the other
         for(String type : WeakAttack) {
@@ -224,16 +243,15 @@ public class ProcessTypes {
     }
 
 
-    private String handleDuplicates(List<String> listOFTypes) {
-        String duplicate = null;
+    private static List<String> handleDuplicates(List<String> listOfTypes) {
+        List<String> duplicate = new ArrayList<>();
         Set<String> seen = new HashSet<>();
 
-        for(String item : listOFTypes){
+        for(String item : listOfTypes){
             if(!seen.add(item)){
-                duplicate = item;
+                duplicate.add(item);
             }
         }
-
         return duplicate;
     }
 
