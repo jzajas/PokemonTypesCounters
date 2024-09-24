@@ -4,80 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Selector with Transparent Table</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0 40px;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        .left-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .image-selectors {
-            display: flex;
-            gap: 40px;
-        }
-        .image-selector {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        select {
-            margin-bottom: 20px;
-            font-size: 18px;
-            padding: 5px;
-        }
-        img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        #greenButton {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: green;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #greenButton:hover {
-            background-color: darkgreen;
-        }
-        .arrow {
-            font-size: 72px;
-            margin: 0 40px;
-        }
-        table {
-            border-collapse: separate;
-            border-spacing: 20px;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-            border: none;
-            background: none;
-            font-size: 24px;
-        }
-        th {
-            font-weight: bold;
-        }
-        tbody th {
-            text-align: right;
-        }
-        thead th {
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/indexStyles.css">
 </head>
 <body>
 <div class="left-container">
@@ -106,7 +33,6 @@
             </select>
             <img id="image1"  alt="Selected image 1">
         </div>
-
         <div class="image-selector">
             <select id="select2">
                 <option value="/assets/images/None.png" selected>None</option>
@@ -168,133 +94,7 @@
     </table>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        function setupImageSelector(selectId, imageId) {
-            const select = document.getElementById(selectId);
-            const img = document.getElementById(imageId);
-
-            function updateImage() {
-                if (select.value) {
-                    img.src = select.value;
-                    img.style.display = 'block';
-                } else {
-                    img.style.display = 'none';
-                }
-            }
-
-            // Update image on page load
-            updateImage();
-
-            // Update image when selection changes
-            select.addEventListener('change', updateImage);
-        }
-
-        // Setup both image selectors
-        setupImageSelector('select1', 'image1');
-        setupImageSelector('select2', 'image2');
-    });
-
-</script>
-<script>
-    function populateTable(items, id) {
-        // Find the table cell with the given id
-        const cell = document.getElementById(id);
-
-        // Check if cell exists
-        if (cell) {
-            // Clear the existing content
-            cell.innerText = '';
-
-            // Populate the cell with the provided items
-            items.forEach((item, index) => {
-                // Create a new paragraph element for each item
-                const p = document.createElement('p');
-                p.innerText = item;
-
-                // Append the paragraph to the cell
-                cell.appendChild(p);
-            });
-        }
-    }
-</script>
-<script>
-    document.getElementById('greenButton').addEventListener('click', function() {
-    var select1Type = document.getElementById('select1').value;
-    var select2Type = document.getElementById('select2').value;
-    const type1 = select1.options[select1.selectedIndex]?.text || '';
-    const type2 = select2.options[select2.selectedIndex]?.text || '';
-
-    fetch('/api/selected-types', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            type1: type1,
-            type2: type2
-        })
-    })
-    console.log('Data sent: ', body)
-    .then(response => response.json())
-    .then(data => {
-        console.log('Response from server:', data);
-
-        if (Array.isArray(data) && data.length === 6) {
-            populateTable(data[0],'prioritizeAttack');
-            populateTable([data[1]],'prioritizeDefense');
-            populateTable(data[2],'strongAttack');
-            populateTable([data[3]],'strongDefense');
-            populateTable(data[4],'avoidAttack');
-            populateTable([data[5]],'avoidDefense');
-
-
-        } else {
-            console.error('Unexpected data format received');
-        }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    });
-});
-</script>
-<!--<script>-->
-<!--    function populateTable(items, id) {-->
-<!--        // Find the table cell with the given id-->
-<!--        const cell = document.getElementById(id);-->
-
-<!--        // Check if cell exists-->
-<!--        if (cell) {-->
-<!--            // Clear the existing content-->
-<!--            cell.innerText = '';-->
-
-<!--            // Populate the cell with the provided items-->
-<!--            items.forEach((item, index) => {-->
-<!--                // Create a new paragraph element for each item-->
-<!--                const p = document.createElement('p');-->
-<!--                p.innerText = item;-->
-
-<!--                // Append the paragraph to the cell-->
-<!--                cell.appendChild(p);-->
-<!--            });-->
-<!--        }-->
-<!--    }-->
-
-<!--    document.addEventListener('DOMContentLoaded', function() {-->
-<!--        // Define the data to be inserted-->
-<!--        const data = [-->
-<!--            ['High', 'Medium'],-->
-<!--            ['Low', 'High'],-->
-<!--            ['Low', 'High'],-->
-<!--        ];-->
-
-<!--        // Populate cells using the new function-->
-<!--        populateTable([data], 'prioritizeAttack');-->
-<!--        populateTable([data], 'prioritizeDefense');-->
-
-<!--    });-->
-<!--</script>-->
+<script src="/js/countersScript.js"></script>
 
 </body>
 </html>

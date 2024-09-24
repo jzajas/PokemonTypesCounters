@@ -1,16 +1,18 @@
 package com.zajdsky.typesCounters.Services;
-
 import com.zajdsky.typesCounters.Templates.Types;
 
 import java.util.*;
 
+//TODO change this class to allow to process Types in a Simple and Detailed way
 public class ProcessTypes {
 
+//    TODO possibly add new variable and if/else or switch case to allow processing in 2 ways
     public static List<List<String>> getTypes(String type1, String type2) {
 
         return ProcessTypes.processType(new String[]{type1, type2});
     }
-//    TODO add 'None' as an option to the javascript an html when choosing type
+
+
     private static List<List<String>> processType(String[] pokemonTypes) {
 
         List<String> effectiveAttack = new ArrayList<>();
@@ -27,8 +29,11 @@ public class ProcessTypes {
         List<String> avoidAttack;
         List<String> avoidDefense;
 
+        if(Objects.equals(pokemonTypes[0], pokemonTypes[1])){
+            pokemonTypes[1]= "None";
+        }
+
         for(String type : pokemonTypes) {
-            System.out.println(type);
             switch (type.toUpperCase()) {
                 case "NORMAL":
                     effectiveAttack.addAll(Types.normalEffectiveAttack);
@@ -189,22 +194,19 @@ public class ProcessTypes {
             effectiveAttackers = processAttack(effectiveDefense, weakDefense, immuneTo);
             effectiveDefenders = processDefense(effectiveAttack, weakAttack, cannotDamage);
         } else {
-            prioritizeAttack = null;
-            prioritizeDefense = null;
-            avoidAttack = null;
-            avoidDefense = null;
+            prioritizeAttack = new ArrayList<>();
+            prioritizeDefense = cannotDamage;
+            avoidAttack = effectiveDefense;
+            avoidAttack.addAll(immuneTo);
+            avoidDefense = effectiveAttack;
 
-            effectiveAttackers = effectiveAttack;
-            effectiveDefenders = effectiveDefense;
+            effectiveAttackers = weakDefense;
+            effectiveDefenders = weakAttack;
         }
 
 //        Removing duplicates from the lists
-        if (prioritizeAttack != null) {
-            effectiveAttackers.removeAll(prioritizeAttack);
-        }
-        if (prioritizeDefense != null) {
-            effectiveDefenders.removeAll(prioritizeDefense);
-        }
+        effectiveAttackers.removeAll(prioritizeAttack);
+        effectiveDefenders.removeAll(prioritizeDefense);
 
         List<List<String>> combinedList = new ArrayList<>();
         combinedList.add(prioritizeAttack);
