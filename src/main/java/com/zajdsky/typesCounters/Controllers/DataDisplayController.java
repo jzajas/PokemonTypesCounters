@@ -12,8 +12,21 @@ import static com.zajdsky.typesCounters.Services.ProcessTypes.getTypes;
 @RequestMapping("/api")
 public class DataDisplayController {
 
-    @PostMapping("/selected-types")
-    public ResponseEntity<List<List<String>>> getSelectedTypes(@RequestBody TypeImages typesSent) {
+    @PostMapping("/detailed-counters")
+    public ResponseEntity<List<List<String>>> getDetailedInfo(@RequestBody TypeImages typesSent) {
+
+        String type1 = typesSent.getType1();
+        String type2 = typesSent.getType2();
+
+        List<List<String>> results = getTypes(type1, type2);
+
+        return ResponseEntity.ok(results);
+
+    }
+
+
+    @PostMapping("/simple-counters")
+    public ResponseEntity<List<List<String>>> getSimpleInfo(@RequestBody TypeImages typesSent) {
 
         String type1 = typesSent.getType1();
         String type2 = typesSent.getType2();

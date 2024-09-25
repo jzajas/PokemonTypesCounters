@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Selector with Transparent Table</title>
-    <link rel="stylesheet" href="/css/indexStyles.css">
+    <link rel="stylesheet" href="/css/countersStyle.css">
 </head>
 <body>
 <div class="left-container">
     <div class="image-selectors">
         <div class="image-selector">
-            <select id="select1">
+            <label for="select1">Type 1</label><select id="select1">
                 <option value="/assets/images/None.png" selected>None</option>
                 <option value="/assets/images/bug.png">Bug</option>
                 <option value="/assets/images/dark.png">Dark</option>
@@ -31,10 +31,10 @@
                 <option value="/assets/images/steel.png">Steel</option>
                 <option value="/assets/images/water.png">Water</option>
             </select>
-            <img id="image1"  alt="Selected image 1">
+            <img id="image1" alt="First type" src="">
         </div>
         <div class="image-selector">
-            <select id="select2">
+            <label for="select2">Type 2</label><select id="select2">
                 <option value="/assets/images/None.png" selected>None</option>
                 <option value="/assets/images/bug.png">Bug</option>
                 <option value="/assets/images/dark.png">Dark</option>
@@ -55,7 +55,7 @@
                 <option value="/assets/images/steel.png">Steel</option>
                 <option value="/assets/images/water.png">Water</option>
             </select>
-            <img id="image2"  alt="Selected image 2">
+            <img id="image2" alt="Second Type" src="">
         </div>
     </div>
 
@@ -66,7 +66,7 @@
 <div class="arrow">➡️</div>
 
 <div class="right-container">
-    <table>
+    <table id="table">
         <thead>
         <tr>
             <th></th>
@@ -95,6 +95,7 @@
 </div>
 
 <script src="/js/countersScript.js"></script>
+<script src="/js/eventListeners.js"></script>
 
 </body>
 </html>

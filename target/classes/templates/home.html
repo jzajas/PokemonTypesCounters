@@ -1,52 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Counter Types Selector</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/assets/images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .button-container {
+            display: flex;
+            gap: 30px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: rgba(76, 175, 80, 0.8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .button:hover {
+            background-color: rgba(69, 160, 73, 0.9);
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-<div class="main-container">
-    <div class="left-section">
-        <div class="image-box-container">
-            <div class="box">
-                <select id="select1">
-                    <option value="">Select an image</option>
-                    <option value="/assets/images/dark.png" selected>Dark</option>
-                    <option value="/assets/images/bug.png">Bug</option>
-                    <option value="/assets/images/fairy.png">Fairy</option>
-                </select>
-                <div id="imageContainer1"></div>
-                <p id="name1"></p>
-            </div>
-            <div class="box">
-                <select id="select2">
-                    <option value="">Select an image</option>
-                    <option value="/assets/images/dark.png" selected>Dark</option>
-                    <option value="/assets/images/bug.png">Bug</option>
-                    <option value="/assets/images/fairy.png">Fairy</option>
-                </select>
-                <div id="imageContainer2"></div>
-                <p id="name2"></p>
-            </div>
-        </div>
-        <button id="greenButton">Calculate</button>
-    </div>
-
-    <div class="arrow-container">
-        <span class="arrow-right"></span>
-    </div>
-
-    <div class="right-section">
-        <div class="box" id="displayNamesBox">
-            <h3>Selected Names</h3>
-            <div id="selectedNames"></div>
-        </div>
-    </div>
+<div class="button-container">
+    <a href="/simplecounters" class="button">Simple Counters</a>
+    <a href="/detailedcounters" class="button">Detailed Counters</a>
 </div>
-
-<script src="/js/script.js"></script>
 </body>
 </html>
