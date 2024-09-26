@@ -40,12 +40,12 @@ document.getElementById('greenButton').addEventListener('click', function() {
 
     var endpoint = getEndpoint();
 
-    fetch('/api/' + endpoint, {
+    fetch(endpoint, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: body
+        body: body,
     })
     .then(response => {
         if (!response.ok) {

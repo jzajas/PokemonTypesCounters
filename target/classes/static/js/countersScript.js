@@ -41,9 +41,9 @@ function getEndpoint(){
     console.log("Number of rows:", rowCount);
 
     if (rowCount == 4){
-        return "detailed-counters";
+        return '/api/detailed-counters';
     }else if(rowCount == 3){
-        return "simple-counters";
+        return '/api/simple-counters';
     }else{
         console.log("Incorrect row count")
     }

@@ -18,7 +18,7 @@ public class DataDisplayController {
         String type1 = typesSent.getType1();
         String type2 = typesSent.getType2();
 
-        List<List<String>> results = getTypes(type1, type2);
+        List<List<String>> results = getTypes(type1, type2, "detailed");
 
         return ResponseEntity.ok(results);
 
@@ -31,7 +31,7 @@ public class DataDisplayController {
         String type1 = typesSent.getType1();
         String type2 = typesSent.getType2();
 
-        List<List<String>> results = getTypes(type1, type2);
+        List<List<String>> results = getTypes(type1, type2, "simple");
 
         return ResponseEntity.ok(results);
 
