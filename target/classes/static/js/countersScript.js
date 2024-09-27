@@ -17,18 +17,25 @@ function populateCell(items, id) {
 
 
 function populateTable(data, size) {
-    if (Array.isArray(data) && size === 6) {
-        populateCell(data[0], 'prioritizeAttack');
-        populateCell([data[1]], 'prioritizeDefense');
-        populateCell(data[2], 'strongAttack');
-        populateCell([data[3]], 'strongDefense');
-        populateCell(data[4], 'avoidAttack');
-        populateCell([data[5]], 'avoidDefense');
+    if (Array.isArray(data) && size === 9) {
+        populateCell(data[0], 'strongAttack');
+        populateCell(data[1], 'strongDefense1');
+        populateCell(data[2], 'strongDefense2');
+
+        populateCell(data[3], 'avoidAttack');
+        populateCell(data[4], 'avoidDefense1');
+        populateCell(data[5], 'avoidDefense2');
+
+        populateCell(data[6], 'attackImmunity');
+        populateCell(data[7], 'defenseImmunity1');
+        populateCell(data[8], 'defenseImmunity2');
+
     } else if (Array.isArray(data) && size === 4) {
         populateCell(data[0], 'strongAttack');
-        populateCell([data[1]], 'strongDefense');
+        populateCell(data[1], 'strongDefense1');
+
         populateCell(data[2], 'avoidAttack');
-        populateCell([data[3]], 'avoidDefense');
+        populateCell(data[3], 'avoidDefense1');
     }else{
         console.error('Unexpected data format received');
     }

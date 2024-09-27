@@ -6,59 +6,88 @@ import java.util.*;
 //TODO change this class to allow to process Types in a Simple and Detailed way
 public class ProcessTypes {
 
-//    TODO possibly add new variable and if/else or switch case to allow processing in 2 ways
     public static List<List<String>> getTypes(String type1, String type2, String inst) {
 
-        String[] types = new String[]{type1, type2};
-
         if(Objects.equals(inst, "simple")){
-            return ProcessTypes.processSimpleType(types);
+            return ProcessTypes.processSimpleType(type1, type2);
         }else if (Objects.equals(inst, "detailed")){
-            return ProcessTypes.processDetailedType(types);
+            return ProcessTypes.processDetailedType(type1, type2);
         }else{
             throw new IllegalArgumentException("Wrong instruction");
         }
     }
 
 
-//    Good/Avoid Attack and Defense
-//    TODO finish this method
-    private static List<List<String>> processSimpleType(String[] types){
+//    TODO Simple returns good types to defend with even if that type is good against only one of the types of the enemy pokemon
+    private static List<List<String>> processSimpleType(String type1, String type2){
         List<List<String>> results = new ArrayList<>();
 
-        HashMap<String, List<String>> typeInteractions = getTypeInteractions(types);
+        HashMap<String, List<String>> typeInteractions = getTypeInteractions(type1, type2);
 
-        processInteractions(typeInteractions);
+        HashMap<String,List<String>> finalInteractions = processInteractions(typeInteractions, "simple");
 
-        List<String> attackWith = typeInteractions.get("weakDefense");
-        List<String> avoidAttackingWith = typeInteractions.get("effectiveDefense");
-        avoidAttackingWith.addAll(typeInteractions.get("immuneTo"));
-        List<String> defendWith = typeInteractions.get("weakAttack");
-        defendWith.addAll(typeInteractions.get("cannotDamage"));
-        List<String> avoidDefendingWith = typeInteractions.get("effectiveAttack");
+        List<String> attackWith = finalInteractions.get("weakDefense");
+        List<String> defendWith = finalInteractions.get("weakAttack");
+        defendWith.addAll(finalInteractions.get("cannotDamage"));
+        List<String> avoidAttackWith = finalInteractions.get("effectiveDefense");
+        avoidAttackWith.addAll(finalInteractions.get("immuneTo"));
+        List<String> avoidDefendWith = finalInteractions.get("effectiveAttack");
 
         results.add(attackWith);
-        results.add(avoidAttackingWith);
         results.add(defendWith);
-        results.add(avoidDefendingWith);
+        results.add(avoidAttackWith);
+        results.add(avoidDefendWith);
 
         return results;
     }
 
 
-//    Good/Avoid/Ineffective Attack and Prioritize/Good/Avoid Defense
+//    Good Attack / Bad Attack / Immunity
+//    Type1 Good Def / Bad Def / Cannot Dmg
+//    Type2 Good Def / Bad Def / Cannot Dmg
 //    TODO finish this method
-    private static List<List<String>> processDetailedType(String[] types){
+    private static List<List<String>> processDetailedType(String type1, String type2){
         List<List<String>> results = new ArrayList<>();
 
-        HashMap<String, List<String>> typeInteractions = getTypeInteractions(types);
+        HashMap<String, List<String>> type1Interactions = getTypeInteractions(type1, "None");
+        HashMap<String, List<String>> type2Interactions = getTypeInteractions(type2, "None");
+        HashMap<String, List<String>> allInteractions = getTypeInteractions(type1, type2);
 
+        HashMap<String, List<String>> attackInteractions = processInteractions(allInteractions, "detailed");
+
+//        Processing with what types to attack
+        List<String> attackWith = attackInteractions.get("weakDefense");
+        List<String> avoidAttackWith = attackInteractions.get("effectiveDefense");
+        List<String> enemyImmunity = attackInteractions.get("immuneTo") ;
+
+//        Processing with what types to defend with separately for each enemy type
+        List<String> defendWithType1 = type1Interactions.get("weakAttack");
+        List<String> avoidDefendWithType1 = type1Interactions.get("effectiveAttack");
+        List<String> cannotDmgType1 = type1Interactions.get("cannotDamage");
+        List<String> defendWithType2 = type2Interactions.get("weakAttack");
+        List<String> avoidDefendWithType2 = type2Interactions.get("effectiveAttack");
+        List<String> cannotDmgType2 = type2Interactions.get("cannotDamage");
+
+
+        results.add(attackWith);
+        results.add(defendWithType1);
+        results.add(defendWithType2);
+
+        results.add(avoidAttackWith);
+        results.add(avoidDefendWithType1);
+        results.add(avoidDefendWithType2);
+
+        results.add(enemyImmunity);
+        results.add(cannotDmgType1);
+        results.add(cannotDmgType2);
 
         return results;
     }
 
 
-    private static HashMap<String, List<String>> getTypeInteractions(String[] pokemonTypes) {
+//    private static HashMap<String, List<String>> getTypeInteractions(String[] pokemonTypes) {
+    private static HashMap<String, List<String>> getTypeInteractions(String type1, String type2) {
+        String[] pokemonTypes = {type1, type2};
 
         HashMap<String, List<String>> typeInteractions = initializeHashMap();
 
@@ -228,7 +257,8 @@ public class ProcessTypes {
     }
 
 
-    private static void processInteractions(HashMap<String, List<String>> mapToProcess){
+    private static HashMap<String, List<String>> processInteractions(HashMap<String, List<String>> mapToProcess, String inst){
+        HashMap<String, List<String>> finalInteractions = new HashMap<>();
 
         List<String> effectiveAttack = removeDuplicates(mapToProcess.get("effectiveAttack"));
         List<String> effectiveDefense = removeDuplicates(mapToProcess.get("effectiveDefense"));
@@ -247,26 +277,36 @@ public class ProcessTypes {
         while (iterator1.hasNext()) {
             String type = iterator1.next();
             if(weakDefense.contains(type)) {
-                effectiveDefense.remove(type);
+                iterator1.remove();
                 weakDefense.remove(type);
             }
         }
-
+        if(Objects.equals(inst, "simple")){
 //        Handling how this Pokémon interacts with other types
 //        TODO in detailed approach this will likely have to change as different moves types have different interactions
-        for (String type : cannotDamage){
-                effectiveAttack.remove(type);
-                weakAttack.remove(type);
+            for (String type : cannotDamage){
+                    effectiveAttack.remove(type);
+                    weakAttack.remove(type);
+            }
+
+            Iterator<String> iterator2 = effectiveAttack.iterator();
+            while (iterator2.hasNext()) {
+                String type = iterator2.next();
+                if(weakAttack.contains(type)) {
+                    iterator2.remove();
+                    weakAttack.remove(type);
+                }
+            }
+            finalInteractions.put("effectiveAttack", effectiveAttack);
+            finalInteractions.put("weakAttack", weakAttack);
+            finalInteractions.put("cannotDamage", cannotDamage);
         }
 
-        Iterator<String> iterator2 = effectiveAttack.iterator();
-        while (iterator2.hasNext()) {
-            String type = iterator1.next();
-            if(weakAttack.contains(type)) {
-                effectiveAttack.remove(type);
-                weakAttack.remove(type);
-            }
-        }
+        finalInteractions.put("immuneTo", immuneTo);
+        finalInteractions.put("effectiveDefense", effectiveDefense);
+        finalInteractions.put("weakDefense", weakDefense);
+
+        return finalInteractions;
     }
 
 
@@ -283,7 +323,6 @@ public class ProcessTypes {
         for (String key : keys) {
             newHashMap.put(key, new ArrayList<>());
         }
-
         return newHashMap;
     }
 
