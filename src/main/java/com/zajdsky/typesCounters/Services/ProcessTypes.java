@@ -3,7 +3,6 @@ import com.zajdsky.typesCounters.Templates.Types;
 
 import java.util.*;
 
-//TODO change this class to allow to process Types in a Simple and Detailed way
 public class ProcessTypes {
 
     public static List<List<String>> getTypes(String type1, String type2, String inst) {
@@ -42,10 +41,6 @@ public class ProcessTypes {
     }
 
 
-//    Good Attack / Bad Attack / Immunity
-//    Type1 Good Def / Bad Def / Cannot Dmg
-//    Type2 Good Def / Bad Def / Cannot Dmg
-//    TODO finish this method
     private static List<List<String>> processDetailedType(String type1, String type2){
         List<List<String>> results = new ArrayList<>();
 
@@ -71,11 +66,11 @@ public class ProcessTypes {
 
         results.add(attackWith);
         results.add(defendWithType1);
-        results.add(defendWithType2);
-
         results.add(avoidAttackWith);
+
         results.add(avoidDefendWithType1);
         results.add(avoidDefendWithType2);
+        results.add(defendWithType2);
 
         results.add(enemyImmunity);
         results.add(cannotDmgType1);
@@ -85,7 +80,6 @@ public class ProcessTypes {
     }
 
 
-//    private static HashMap<String, List<String>> getTypeInteractions(String[] pokemonTypes) {
     private static HashMap<String, List<String>> getTypeInteractions(String type1, String type2) {
         String[] pokemonTypes = {type1, type2};
 
@@ -283,7 +277,6 @@ public class ProcessTypes {
         }
         if(Objects.equals(inst, "simple")){
 //        Handling how this Pokémon interacts with other types
-//        TODO in detailed approach this will likely have to change as different moves types have different interactions
             for (String type : cannotDamage){
                     effectiveAttack.remove(type);
                     weakAttack.remove(type);

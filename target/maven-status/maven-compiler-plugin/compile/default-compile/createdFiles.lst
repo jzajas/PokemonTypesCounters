@@ -1,0 +1,6 @@
+com\zajdsky\typesCounters\PokemonTypesCountersApplication.class
+com\zajdsky\typesCounters\Services\ProcessTypes.class
+com\zajdsky\typesCounters\Controllers\DataDisplayController.class
+com\zajdsky\typesCounters\Templates\TypeImages.class
+com\zajdsky\typesCounters\Templates\Types.class
+com\zajdsky\typesCounters\Controllers\PageController.class

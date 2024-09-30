@@ -8,6 +8,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
+
+
 .left-container {
     display: flex;
     flex-direction: column;
@@ -34,6 +36,8 @@ img {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+
 #greenButton {
     margin-top: 20px;
     padding: 10px 20px;
@@ -50,23 +54,73 @@ img {
     font-size: 72px;
     margin: 0 40px;
 }
-table {
-    border-collapse: separate;
-    border-spacing: 20px;
+
+
+.right-container {
+    height: 80vh;
+    width: 100%;
+    border: 1px solid #ddd;
+    position: relative;
+    top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
-th, td {
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+thead tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+}
+
+tbody {
+    display: block;
+    overflow-y: auto;
+    width: 100%;
+    height: calc(80vh - 53px);
+}
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+td, th {
     padding: 10px;
     text-align: center;
     border: none;
-    background: none;
     font-size: 24px;
-}
-th {
-    font-weight: bold;
+    border-bottom: 1px solid #eee;
 }
 tbody th {
     text-align: right;
 }
-thead th {
-    text-align: center;
+tbody tr:last-child td,
+tbody tr:last-child th {
+    border-bottom: none;
+}
+
+tbody::-webkit-scrollbar {
+    width: 10px;
+}
+tbody::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+tbody::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+tbody::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

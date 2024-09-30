@@ -1,3 +1,9 @@
+const allId= ['strongAttack', 'strongDefense1', 'avoidAttack',
+            'avoidDefense1', 'avoidDefense2',  'strongDefense2',
+            'attackImmunity', 'defenseImmunity1', 'defenseImmunity2'
+  ];
+
+
 // Function to populate a table
 function populateCell(items, id) {
     const cell = document.getElementById(id);
@@ -12,30 +18,22 @@ function populateCell(items, id) {
             // Appending the paragraph to the cell
             cell.appendChild(p);
         });
+    } else {
+            console.error(`Cell with id "${id}" not found`);
     }
 }
 
 
 function populateTable(data, size) {
     if (Array.isArray(data) && size === 9) {
-        populateCell(data[0], 'strongAttack');
-        populateCell(data[1], 'strongDefense1');
-        populateCell(data[2], 'strongDefense2');
-
-        populateCell(data[3], 'avoidAttack');
-        populateCell(data[4], 'avoidDefense1');
-        populateCell(data[5], 'avoidDefense2');
-
-        populateCell(data[6], 'attackImmunity');
-        populateCell(data[7], 'defenseImmunity1');
-        populateCell(data[8], 'defenseImmunity2');
+        for (let i = 0; i < 9; i++){
+            populateCell(data[i], allId[i])
+        }
 
     } else if (Array.isArray(data) && size === 4) {
-        populateCell(data[0], 'strongAttack');
-        populateCell(data[1], 'strongDefense1');
-
-        populateCell(data[2], 'avoidAttack');
-        populateCell(data[3], 'avoidDefense1');
+        for (let i = 0; i < 4; i++){
+            populateCell(data[i], allId[i])
+        }
     }else{
         console.error('Unexpected data format received');
     }
