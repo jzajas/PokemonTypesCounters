@@ -1,26 +1,20 @@
-# Target directory (generated during build)
+# Maven build output
 /target/
 
-# IntelliJ IDEA project files
-/.idea/
-/*.iml
+# IntelliJ IDEA
+.idea/
 
-# Maven wrapper JAR file
-/.mvn/wrapper/maven-wrapper.jar
-
-# Log files
-*.log
+# Maven Wrapper files
+.mvn/
+mvnw
+mvnw.cmd
 
 # Generated files
-.DS_Store
 *.class
+*.jar
+*.war
+*.ear
 
-# Docker-related files (optional, if you use them)
-docker-compose.override.yml
-
-# Ignore test output
-/test-output/
-
-# Temporary files created by build processes
-*.tmp
-*.swp
+# Docker files
+/docker-compose.yml
+/docker-compose.override.yml
