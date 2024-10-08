@@ -58,6 +58,7 @@ document.getElementById('greenButton').addEventListener('click', function() {
         let size = data.length
 
         populateTable(data, size);
+
     })
     .catch((error) => {
         console.error('Error:', error);

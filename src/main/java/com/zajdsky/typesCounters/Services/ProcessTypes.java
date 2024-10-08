@@ -1,11 +1,16 @@
 package com.zajdsky.typesCounters.Services;
 import com.zajdsky.typesCounters.Templates.Types;
 
+import javax.lang.model.type.NullType;
 import java.util.*;
 
 public class ProcessTypes {
 
     public static List<List<String>> getTypes(String type1, String type2, String inst) {
+
+        if (Objects.equals(type1, type2)){
+            type2 = "None";
+        }
 
         if(Objects.equals(inst, "simple")){
             return ProcessTypes.processSimpleType(type1, type2);
