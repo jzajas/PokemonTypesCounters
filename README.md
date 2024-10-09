@@ -69,7 +69,7 @@ Contains html files with webpages.
     ```
 2. Navigate into the project directory:   
    ```bash
-   cd repository
+   cd PokemonTypesCounters
     ```
 3. Build the project using Maven
    ```bash
