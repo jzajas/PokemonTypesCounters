@@ -1,12 +1,18 @@
 body {
+    font-family: Arial, sans-serif;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Ustaw elementy jeden pod drugim */
+    justify-content: space-between; /* Umieść treść w środku, a footer na dole */
     height: 100vh;
     margin: 0;
     padding: 0 40px;
-    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+}
+main {
+    flex-grow: 1; /* Główna zawartość wypełnia dostępną przestrzeń */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -123,4 +129,11 @@ tbody::-webkit-scrollbar-thumb {
 }
 tbody::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
 }

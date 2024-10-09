@@ -3,90 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Selector with Transparent Table</title>
+    <title>Simple Counters Selector</title>
     <link rel="stylesheet" href="/css/countersStyle.css">
 </head>
 <body>
-<div class="left-container">
-    <div class="image-selectors">
-        <div class="image-selector">
-            <label for="select1">Type 1</label><select id="select1">
-                <option value="/images/None.png" selected>None</option>
-                <option value="/images/bug.png">Bug</option>
-                <option value="/images/dark.png">Dark</option>
-                <option value="/images/dragon.png">Dragon</option>
-                <option value="/images/electric.png">Electric</option>
-                <option value="/images/fairy.png">Fairy</option>
-                <option value="/images/fighting.png">Fighting</option>
-                <option value="/images/fire.png">Fire</option>
-                <option value="/images/flying.png">Flying</option>
-                <option value="/images/ghost.png">Ghost</option>
-                <option value="/images/grass.png">Grass</option>
-                <option value="/images/ground.png">Ground</option>
-                <option value="/images/ice.png">Ice</option>
-                <option value="/images/normal.png">Normal</option>
-                <option value="/images/poison.png">Poison</option>
-                <option value="/images/psychic.png">Psychic</option>
-                <option value="/images/rock.png">Rock</option>
-                <option value="/images/steel.png">Steel</option>
-                <option value="/images/water.png">Water</option>
-        </select>
-            <img id="image1" alt="First type" src="">
+<main>
+    <div class="left-container">
+        <div class="image-selectors">
+            <div class="image-selector">
+                <label for="select1">Type 1</label><select id="select1">
+                    <option value="/images/None.png" selected>None</option>
+                    <option value="/images/bug.png">Bug</option>
+                    <option value="/images/dark.png">Dark</option>
+                    <option value="/images/dragon.png">Dragon</option>
+                    <option value="/images/electric.png">Electric</option>
+                    <option value="/images/fairy.png">Fairy</option>
+                    <option value="/images/fighting.png">Fighting</option>
+                    <option value="/images/fire.png">Fire</option>
+                    <option value="/images/flying.png">Flying</option>
+                    <option value="/images/ghost.png">Ghost</option>
+                    <option value="/images/grass.png">Grass</option>
+                    <option value="/images/ground.png">Ground</option>
+                    <option value="/images/ice.png">Ice</option>
+                    <option value="/images/normal.png">Normal</option>
+                    <option value="/images/poison.png">Poison</option>
+                    <option value="/images/psychic.png">Psychic</option>
+                    <option value="/images/rock.png">Rock</option>
+                    <option value="/images/steel.png">Steel</option>
+                    <option value="/images/water.png">Water</option>
+            </select>
+                <img id="image1" alt="First type" src="">
+            </div>
+            <div class="image-selector">
+                <label for="select2">Type 2</label><select id="select2">
+                    <option value="/images/None.png" selected>None</option>
+                    <option value="/images/bug.png">Bug</option>
+                    <option value="/images/dark.png">Dark</option>
+                    <option value="/images/dragon.png">Dragon</option>
+                    <option value="/images/electric.png">Electric</option>
+                    <option value="/images/fairy.png">Fairy</option>
+                    <option value="/images/fighting.png">Fighting</option>
+                    <option value="/images/fire.png">Fire</option>
+                    <option value="/images/flying.png">Flying</option>
+                    <option value="/images/ghost.png">Ghost</option>
+                    <option value="/images/grass.png">Grass</option>
+                    <option value="/images/ground.png">Ground</option>
+                    <option value="/images/ice.png">Ice</option>
+                    <option value="/images/normal.png">Normal</option>
+                    <option value="/images/poison.png">Poison</option>
+                    <option value="/images/psychic.png">Psychic</option>
+                    <option value="/images/rock.png">Rock</option>
+                    <option value="/images/steel.png">Steel</option>
+                    <option value="/images/water.png">Water</option>
+            </select>
+                <img id="image2" alt="Second Type" src="">
+            </div>
         </div>
-        <div class="image-selector">
-            <label for="select2">Type 2</label><select id="select2">
-                <option value="/images/None.png" selected>None</option>
-                <option value="/images/bug.png">Bug</option>
-                <option value="/images/dark.png">Dark</option>
-                <option value="/images/dragon.png">Dragon</option>
-                <option value="/images/electric.png">Electric</option>
-                <option value="/images/fairy.png">Fairy</option>
-                <option value="/images/fighting.png">Fighting</option>
-                <option value="/images/fire.png">Fire</option>
-                <option value="/images/flying.png">Flying</option>
-                <option value="/images/ghost.png">Ghost</option>
-                <option value="/images/grass.png">Grass</option>
-                <option value="/images/ground.png">Ground</option>
-                <option value="/images/ice.png">Ice</option>
-                <option value="/images/normal.png">Normal</option>
-                <option value="/images/poison.png">Poison</option>
-                <option value="/images/psychic.png">Psychic</option>
-                <option value="/images/rock.png">Rock</option>
-                <option value="/images/steel.png">Steel</option>
-                <option value="/images/water.png">Water</option>
-        </select>
-            <img id="image2" alt="Second Type" src="">
-        </div>
+
+        <button id="greenButton">Calculate</button>
     </div>
 
-    <button id="greenButton">Calculate</button>
+    <div class="arrow">➡️</div>
 
-</div>
+    <div class="right-container">
+        <table id="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Attack as</th>
+                <th>Defend as</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>Good Choice</th>
+                <td id="strongAttack"></td>
+                <td id="strongDefense1"></td>
+            </tr>
+            <tr>
+                <th>Avoid</th>
+                <td id="avoidAttack"></td>
+                <td id="avoidDefense1"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
 
-<div class="arrow">➡️</div>
-
-<div class="right-container">
-    <table id="table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Attack as</th>
-            <th>Defend as</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th>Good Choice</th>
-            <td id="strongAttack"></td>
-            <td id="strongDefense1"></td>
-        </tr>
-        <tr>
-            <th>Avoid</th>
-            <td id="avoidAttack"></td>
-            <td id="avoidDefense1"></td>
-        </tr>
-        </tbody>
-    </table>
+<div>
+    <footer>
+        <small>
+            <span style="color: green;">green</span> - is good both in offense and defense<br>
+            <span style="color: red;">red</span> - is bad both in offense and defense<br>
+            <span style="color: orange;">orange</span> - is good in offense and bad in defense<br>
+            <span style="color: blue;">blue</span> - is bad in offense and good in defense
+        </small>
+    </footer>
 </div>
 
 <script src="/js/countersScript.js"></script>

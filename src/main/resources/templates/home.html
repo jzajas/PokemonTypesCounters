@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,25 @@
     <link rel="stylesheet" href="/css/homeStyle.css">
 </head>
 <body>
-<div class="button-container">
-    <a href="/simplecounters" class="button">Simple Counters</a>
-    <a href="/detailedcounters" class="button">Detailed Counters</a>
+<main>
+    <div class="button-container">
+        <a href="/simplecounters" class="button">Simple Counters</a>
+        <a href="/detailedcounters" class="button">Detailed Counters</a>
+    </div>
+
+</main>
+
+<div>
+    <footer>
+        <small>
+            This project is made of 2 sites. Each one allows user to choose up to 2 types of an enemy pokemon.
+            Simple which returns what attack types are good or not and what types to defend with or avoid.
+            Detailed one shows what attacks are good, ineffective and have no effect at all and shows how enemy's types
+            interact with other types.
+            Please note that some pokemon might have attacks with types other than their types and this application doesn't
+            take that into consideration.
+        </small>
+    </footer>
 </div>
 </body>
 </html>
