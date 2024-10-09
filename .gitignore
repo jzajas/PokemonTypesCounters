@@ -6,15 +6,22 @@
 
 # Maven Wrapper files
 .mvn/
+/.mvn/wrapper/
 mvnw
 mvnw.cmd
+/mvnw
+/mvnw.cmd
 
 # Generated files
 *.class
 *.jar
 *.war
-*.ear
 
 # Docker files
 /docker-compose.yml
 /docker-compose.override.yml
+
+# .yaml files
+/compose.yaml
+compose.yaml
+
