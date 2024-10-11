@@ -8,6 +8,7 @@ USer can choose up to 2 types and webpage will display what good attack types ar
 - [Description](#description)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
+- [Docker](#Docker)
 
 ## Description
 Provide an overview of the application. Explain the purpose of the project, what problems it solves, and any 
@@ -79,5 +80,17 @@ Contains html files with webpages.
    ```bash
    mvn spring-boot:run
     ```
-   
+5. Then go to [this site](http://localhost:8080)
 
+
+## Docker
+If you want to use the image of the project follow these steps.
+1. Pull the image from Docker Hub
+   ```bash
+    docker pull jzajas/types-counters:v1.0
+   ```
+2. Run the image
+   ```bash
+    docker run -p 8080:80 jzajas/types-counters:v1.0
+   ```
+3. Then go to [this site](http://localhost:80)
